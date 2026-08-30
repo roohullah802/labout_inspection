@@ -1,4 +1,4 @@
-import { Bot, Building2, FileText, LayoutGrid, LogOut, Settings, Users, UserSquare2 } from "lucide-react";
+import { Building2, FileText, LayoutGrid, LogOut, Settings, Users, UserSquare2, X } from "lucide-react";
 import { useLocation, useNavigate } from "react-router-dom";
 
 interface NavItem {
@@ -10,22 +10,35 @@ interface NavItem {
 
 const navItems: NavItem[] = [
     { label: "Dashboard", icon: <LayoutGrid size={18} />, navigation: "/admin" },
-    { label: "Administration", icon: <Users size={18} /> },
-    { label: "General Setting", icon: <Building2 size={18} /> },
-    { label: "Companies", icon: <Building2 size={18} /> },
+    { label: "Administration", icon: <Users size={18} />, navigation: "/admin/administration" },
+    { label: "Companies", icon: <Building2 size={18} />, navigation: "/admin/companies" },
     { label: "Challans", icon: <FileText size={18} />, navigation: "/admin/challans" },
-    { label: "Report", icon: <UserSquare2 size={18} /> },
-    { label: "AI Module", icon: <Bot size={18} /> },
-    { label: "Settings", icon: <Settings size={18} /> },
+    { label: "Report", icon: <UserSquare2 size={18} />, navigation: "/admin/report" },
+    { label: "Settings", icon: <Settings size={18} />, navigation: "/admin/settings" },
 ];
 
-export const SideBar: React.FC = () => {
+interface SideBarProps {
+    onClose?: () => void;
+}
+
+export const SideBar: React.FC<SideBarProps> = ({ onClose }) => {
     const navigate = useNavigate();
     const location = useLocation();
     return (
         <aside className="w-52 h-screen bg-[#33105a] text-white flex flex-col shrink-0">
-            {/* Logo */}
-            <div className="flex flex-col items-center py-6 px-4 border-b border-white/10">
+            {/* Logo + close button on mobile */}
+            <div className="flex flex-col items-center py-6 px-4 border-b border-white/10 relative">
+                {/* Close button — only visible on mobile */}
+                {onClose && (
+                    <button
+                        onClick={onClose}
+                        className="absolute top-3 right-3 p-1 rounded-md text-white/70 hover:text-white hover:bg-white/10 transition lg:hidden"
+                        aria-label="Close sidebar"
+                    >
+                        <X size={18} />
+                    </button>
+                )}
+
                 <div className="w-12 h-12 flex items-center justify-center mb-2">
                     <img
                         src="../src/assets/dashboard-logo-green.svg"
@@ -46,7 +59,9 @@ export const SideBar: React.FC = () => {
             {/* Navigation */}
             <nav className="flex-1 px-3 py-4 space-y-1 overflow-y-auto">
                 {navItems.map((item) => {
-                    const isActive = location.pathname === item.navigation
+                    const isActive = item.navigation === "/admin"
+                        ? location.pathname === item.navigation
+                        : item.navigation ? location.pathname.startsWith(item.navigation) : false
                     return (
                         <button
                             key={item.label}
@@ -54,7 +69,10 @@ export const SideBar: React.FC = () => {
                                 ? "bg-linear-to-r from-[#8f74ac] to-[#33105a] text-white"
                                 : "text-[#dddbdf] hover:bg-white/10 hover:bg-linear-to-r from-[#8f74ac] to-[#33105a]"
                                 }`}
-                            onClick={() => navigate(item.navigation)}
+                            onClick={() => {
+                                navigate(item.navigation)
+                                onClose?.()
+                            }}
                         >
                             {item.icon}
                             <span>{item.label}</span>

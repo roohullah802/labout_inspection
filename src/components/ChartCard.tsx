@@ -28,23 +28,23 @@ const chartData: ChartDatum[] = [
 ];
 
 export const ChartCard: React.FC = () => (
-    <div className="flex h-full flex-col gap-4 overflow-hidden rounded-2xl bg-white p-6 shadow-sm">
-        <div className="flex shrink-0 items-start justify-between">
-            <div>
-                <div className="flex items-center gap-1.5 text-sm text-slate-400">
+    <div className="flex h-full flex-col gap-3 sm:gap-4 overflow-hidden rounded-2xl bg-white p-4 sm:p-6 shadow-sm">
+        <div className="flex shrink-0 items-start justify-between gap-2">
+            <div className="min-w-0">
+                <div className="flex items-center gap-1.5 text-xs sm:text-sm text-slate-400">
                     <span>Primary Text</span>
                     <Info size={14} />
                 </div>
-                <div className="text-2xl font-bold text-slate-800 mt-1">5,987.34</div>
-                <div className="text-xs text-slate-400 mt-0.5">Secondary text</div>
+                <div className="text-xl sm:text-2xl font-bold text-slate-800 mt-1">5,987.34</div>
+                <div className="text-[10px] sm:text-xs text-slate-400 mt-0.5">Secondary text</div>
             </div>
-            <button className="flex items-center gap-1 text-xs font-medium text-slate-500 border border-slate-200 rounded-lg px-3 py-1.5">
+            <button className="flex items-center gap-1 text-[10px] sm:text-xs font-medium text-slate-500 border border-slate-200 rounded-lg px-2 sm:px-3 py-1 sm:py-1.5 shrink-0">
                 This Year
                 <ChevronDown size={10} />
             </button>
         </div>
 
-        <div className="w-full flex-1">
+        <div className="w-full flex-1 min-h-45">
             <ResponsiveContainer width="100%" height="100%">
                 <BarChart data={chartData} barGap={30} barCategoryGap="10%">
                     <CartesianGrid vertical={false} stroke="#eef0f5" />
@@ -52,12 +52,13 @@ export const ChartCard: React.FC = () => (
                         dataKey="month"
                         tickLine={false}
                         axisLine={false}
-                        tick={{ fontSize: 11, fill: "#94a3b8" }}
+                        tick={{ fontSize: 10, fill: "#94a3b8" }}
                     />
                     <YAxis
                         tickLine={false}
                         axisLine={false}
-                        tick={{ fontSize: 11, fill: "#94a3b8" }}
+                        tick={{ fontSize: 10, fill: "#94a3b8" }}
+                        width={30}
                     />
                     <Tooltip cursor={{ fill: "rgba(0,0,0,0.03)" }} />
                     <Bar dataKey="pending" name="Pending" fill="#fbbf70" radius={[3, 3, 0, 0]} />
@@ -67,7 +68,7 @@ export const ChartCard: React.FC = () => (
             </ResponsiveContainer>
         </div>
 
-        <div className="flex shrink-0 items-center justify-center gap-6 border-t border-slate-100 pt-4 text-xs text-slate-500">
+        <div className="flex shrink-0 flex-wrap items-center justify-center gap-3 sm:gap-6 border-t border-slate-100 pt-3 sm:pt-4 text-[10px] sm:text-xs text-slate-500">
             <span className="flex items-center gap-1.5">
                 <span className="w-2 h-2 rounded-full bg-[#fbbf70]" />
                 Pending

@@ -24,7 +24,7 @@ export default function LoginPage() {
     };
 
     return (
-        <div className="flex h-screen w-full overflow-hidden bg-white">
+        <div className="flex min-h-screen w-full flex-col overflow-hidden bg-white md:h-screen md:flex-row">
             {/* LEFT PANEL */}
             <div className="relative hidden w-full max-w-[52%] flex-col justify-between overflow-hidden md:flex">
                 {/* Background image */}
@@ -38,26 +38,26 @@ export default function LoginPage() {
 
                 {/* Center content */}
                 <div className="relative z-10 flex flex-1 flex-col items-center justify-center px-10 text-center">
-                    <img src={leftSideLogo} alt="Inspection System" className="h-32 w-32 md:h-32 md:w-32" />
+                    <img src={leftSideLogo} alt="Inspection System" className="h-24 w-24 lg:h-32 lg:w-32" />
 
-                    <h1 className="mt-6 text-4xl font-extrabold text-(--bright-teal)">
+                    <h1 className="mt-6 text-3xl lg:text-4xl font-extrabold text-(--bright-teal)">
                         Inspection System
                     </h1>
-                    <p className="mt-2 text-lg font-medium text-white">Labour Department</p>
+                    <p className="mt-2 text-base lg:text-lg font-medium text-white">Labour Department</p>
 
                     {/* Icon badges */}
                     <div>
-                        <img src={logoWhite} alt="Inspection System" className="w-56 md:mt-12 md:w-56" />
+                        <img src={logoWhite} alt="Inspection System" className="w-40 lg:w-56 mt-8 lg:mt-12" />
                     </div>
                 </div>
 
                 {/* Footer */}
-                <div className="relative z-10 flex items-center justify-between border-t border-white/15 px-8 py-4 text-xs text-white/70">
+                <div className="relative z-10 flex flex-col items-center gap-2 border-t border-white/15 px-6 py-4 text-xs text-white/70 lg:flex-row lg:justify-between lg:px-8">
                     <span>
                         © 2026 - <span className="text-(--bright-teal)">Inspection System</span> Dashboard
                     </span>
                     <div className="flex items-center gap-4">
-                        <span className="h-1 w-1 rounded-full bg-white/40" />
+                        <span className="h-1 w-1 rounded-full bg-white/40 hidden lg:block" />
                         <span>
                             Made by <span className="font-semibold text-yellow-400">KPITB</span>
                         </span>
@@ -69,10 +69,10 @@ export default function LoginPage() {
             </div>
 
             {/* RIGHT PANEL */}
-            <div className="flex flex-1 flex-col overflow-auto justify-between bg-[#F8FAFE] px-8 py-8 md:px-16 lg:px-24">
+            <div className="flex flex-1 flex-col overflow-auto justify-between bg-[#F8FAFE] px-5 py-6 sm:px-8 sm:py-8 md:px-12 lg:px-24">
                 {/* Header logo */}
                 <div className="flex items-center gap-3">
-                    <img src={logoColor} alt="Inspection System" className="ml-4 mb-3 h-22 w-66" />
+                    <img src={logoColor} alt="Inspection System" className="mb-3 h-16 w-48 sm:h-22 sm:w-66 ml-0 sm:ml-4" />
                 </div>
 
                 {/* Form */}
@@ -129,31 +129,6 @@ export default function LoginPage() {
                             Login
                         </button>
                     </form>
-
-                    {/* {location.pathname === "/sign-up" ? (
-                        ""
-                    ) : (
-                        <div className="mt-8 text-center">
-                            <p className="text-sm text-gray-500">Don't have an account?</p>
-                            <button
-                                type="button"
-                                className="mt-3 w-full rounded-lg bg-[#2D0D4D] py-3.5 text-sm font-semibold text-white transition-colors hover:bg-[#3d1568]"
-                                onClick={() => {
-                                    navigation("/sign-up")
-                                    setUserData({
-                                        fullName: "",
-                                        cnic: "",
-                                        phoneNo: "",
-                                        designation: "",
-                                        password: "",
-                                        email: ""
-                                    })
-                                }}
-                            >
-                                Create an Account
-                            </button>
-                        </div>
-                    )} */}
                 </div>
 
                 <div />
