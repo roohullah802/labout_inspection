@@ -68,7 +68,7 @@ const LabourDashboard: React.FC = () => {
                     <Path location={location} />
                 </nav>
 
-                {roleParam === 'secretary' && (
+                {(roleParam !== 'director' && roleParam !== 'district_attorney' && roleParam !== 'district attorney') && (
                     <Link to={"/admin/new-task"} className="flex w-full items-center justify-center gap-2 rounded-lg bg-[#14B8A6] px-4 py-2 text-xs font-semibold text-white transition-colors hover:bg-[#0d9488] sm:w-auto sm:justify-start">
                         Assign a Task
                         <ChevronRight size={14} />
@@ -79,12 +79,12 @@ const LabourDashboard: React.FC = () => {
             {/* Body */}
             <section className="flex flex-1 min-h-0 flex-col px-3 py-3 sm:px-4 sm:py-4">
                 <div className="flex flex-col gap-4 xl:flex-row w-full">
-                    <div className="flex flex-col flex-1 gap-4">
-                        <div className="grid w-full grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
-                            {renderCards()}
-                        </div>
-
-                        {roleParam === 'director' && (
+                    {roleParam === 'director' ? (
+                        <div className="flex flex-col xl:flex-1 gap-4">
+                            <div className="grid w-full grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
+                                {renderCards()}
+                            </div>
+                            
                             <div className="flex flex-col gap-3">
                                 <div className="flex items-center gap-4 bg-[#391054] text-white p-4 rounded-xl">
                                     <div className="flex items-center justify-center bg-white/20 p-2 rounded-lg">
@@ -113,8 +113,12 @@ const LabourDashboard: React.FC = () => {
                                     </div>
                                 </div>
                             </div>
-                        )}
-                    </div>
+                        </div>
+                    ) : (
+                        <div className="grid w-full grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4 xl:flex-1">
+                            {renderCards()}
+                        </div>
+                    )}
 
                     <div className="w-full min-h-75 xl:w-112.5 xl:shrink-0">
                         <ChartCard />
