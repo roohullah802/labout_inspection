@@ -68,10 +68,12 @@ const LabourDashboard: React.FC = () => {
                     <Path location={location} />
                 </nav>
 
-                <Link to={"/admin/new-task"} className="flex w-full items-center justify-center gap-2 rounded-lg bg-[#14B8A6] px-4 py-2 text-xs font-semibold text-white transition-colors hover:bg-[#0d9488] sm:w-auto sm:justify-start">
-                    Assign a Task
-                    <ChevronRight size={14} />
-                </Link>
+                {roleParam === 'secretary' && (
+                    <Link to={"/admin/new-task"} className="flex w-full items-center justify-center gap-2 rounded-lg bg-[#14B8A6] px-4 py-2 text-xs font-semibold text-white transition-colors hover:bg-[#0d9488] sm:w-auto sm:justify-start">
+                        Assign a Task
+                        <ChevronRight size={14} />
+                    </Link>
+                )}
             </div>
 
             {/* Body */}
