@@ -42,6 +42,16 @@ const LabourDashboard: React.FC = () => {
                 </>
             );
         }
+        if (roleParam === 'labour_court' || roleParam === 'labour court') {
+            return (
+                <>
+                    <StatCard icon={<ClipboardList size={16} />} iconBg="bg-purple-200" iconColor="text-purple-700" value={34} label="Total Cases Filed" />
+                    <StatCard icon={<Clock size={16} />} iconBg="bg-amber-200" iconColor="text-amber-700" value={12} label="Pending Hearings" />
+                    <StatCard icon={<Eye size={16} />} iconBg="bg-blue-200" iconColor="text-blue-700" value={19} label="Under Review" />
+                    <StatCard icon={<ClipboardCheck size={16} />} iconBg="bg-emerald-200" iconColor="text-emerald-600" value={145} label="Cases Disposed" />
+                </>
+            );
+        }
         // Default (Secretary)
         return (
             <>
@@ -68,7 +78,7 @@ const LabourDashboard: React.FC = () => {
                     <Path location={location} />
                 </nav>
 
-                {(roleParam !== 'director' && roleParam !== 'district_attorney' && roleParam !== 'district attorney') && (
+                {(roleParam !== 'director' && roleParam !== 'district_attorney' && roleParam !== 'district attorney' && roleParam !== 'labour_court' && roleParam !== 'labour court') && (
                     <Link to={"/admin/new-task"} className="flex w-full items-center justify-center gap-2 rounded-lg bg-[#14B8A6] px-4 py-2 text-xs font-semibold text-white transition-colors hover:bg-[#0d9488] sm:w-auto sm:justify-start">
                         Assign a Task
                         <ChevronRight size={14} />

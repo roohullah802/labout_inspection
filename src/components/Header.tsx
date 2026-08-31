@@ -25,6 +25,9 @@ export const Header: React.FC<HeaderProps> = ({ onMenuToggle }) => {
     } else if (roleParam === "district attorney" || roleParam === "district_attorney") {
         title = "District Attorney Dashboard";
         roleDisplay = "District Attorney";
+    } else if (roleParam === "labour_court" || roleParam === "labour court") {
+        title = "Labour Court Dashboard";
+        roleDisplay = "Labour Court";
     }
 
     // Close dropdown on click outside
