@@ -278,9 +278,12 @@ export default function CompanyDetail() {
                     >
                         <ArrowLeft size={13} /> Back
                     </Link>
-                    <button className="flex items-center justify-center gap-2 rounded-lg bg-[#14B8A6] px-4 py-2 text-[12px] font-semibold text-white transition-colors hover:bg-[#0d9488]">
+                    <Link 
+                        to="/admin/challans/create"
+                        className="flex items-center justify-center gap-2 rounded-lg bg-[#14B8A6] px-4 py-2 text-[12px] font-semibold text-white transition-colors hover:bg-[#0d9488]"
+                    >
                         <span className="text-lg leading-none">+</span> Create Challan
-                    </button>
+                    </Link>
                 </div>
             </div>
 
