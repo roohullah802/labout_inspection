@@ -46,7 +46,7 @@ const LabourDashboard: React.FC = () => {
             return (
                 <>
                     <StatCard icon={<ClipboardList size={16} />} iconBg="bg-purple-200" iconColor="text-purple-700" value={34} label="Total Cases Filed" />
-                    <StatCard icon={<Clock size={16} />} iconBg="bg-amber-200" iconColor="text-amber-700" value={12} label="Pending Hearings" />
+                    <StatCard icon={<Clock size={16} />} iconBg="bg-amber-200" iconColor="text-amber-700" value="12" label="Pending Hearings" />
                     <StatCard icon={<Eye size={16} />} iconBg="bg-blue-200" iconColor="text-blue-700" value={19} label="Under Review" />
                     <StatCard icon={<ClipboardCheck size={16} />} iconBg="bg-emerald-200" iconColor="text-emerald-600" value={145} label="Cases Disposed" />
                 </>
@@ -89,44 +89,46 @@ const LabourDashboard: React.FC = () => {
             {/* Body */}
             <section className="flex flex-1 min-h-0 flex-col px-3 py-3 sm:px-4 sm:py-4">
                 <div className="flex flex-col gap-4 xl:flex-row w-full">
-                    {roleParam === 'director' ? (
+                    {roleParam === 'secretary' ? (
+                        <div className="grid w-full grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4 xl:flex-1">
+                            {renderCards()}
+                        </div>
+                    ) : (
                         <div className="flex flex-col xl:flex-1 gap-4">
                             <div className="grid w-full grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
                                 {renderCards()}
                             </div>
                             
-                            <div className="flex flex-col gap-3">
-                                <div className="flex items-center gap-4 bg-[#391054] text-white p-4 rounded-xl">
-                                    <div className="flex items-center justify-center bg-white/20 p-2 rounded-lg">
-                                        <FileText size={24} />
+                            {roleParam === 'director' && (
+                                <div className="flex flex-col gap-3">
+                                    <div className="flex items-center gap-4 bg-[#391054] text-white p-4 rounded-xl">
+                                        <div className="flex items-center justify-center bg-white/20 p-2 rounded-lg">
+                                            <FileText size={24} />
+                                        </div>
+                                        <div>
+                                            <p className="font-semibold text-sm sm:text-base mb-2">A new Task assigned to Director Laboure by Secretary Labour</p>
+                                            <div className="flex flex-wrap gap-2 text-xs font-medium text-slate-800">
+                                                <span className="bg-white px-3 py-1 rounded-full flex items-center gap-1"><span className="w-2 h-2 rounded-full bg-red-500"></span> Urgent</span>
+                                                <span className="bg-white px-3 py-1 rounded-full flex items-center gap-1"><span className="w-2 h-2 rounded-full bg-yellow-500"></span> Inspection</span>
+                                                <span className="bg-white px-3 py-1 rounded-full flex items-center gap-1"><span className="w-2 h-2 rounded-full bg-green-500"></span> Peshawar</span>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div>
-                                        <p className="font-semibold text-sm sm:text-base mb-2">A new Task assigned to Director Laboure by Secretary Labour</p>
-                                        <div className="flex flex-wrap gap-2 text-xs font-medium text-slate-800">
-                                            <span className="bg-white px-3 py-1 rounded-full flex items-center gap-1"><span className="w-2 h-2 rounded-full bg-red-500"></span> Urgent</span>
-                                            <span className="bg-white px-3 py-1 rounded-full flex items-center gap-1"><span className="w-2 h-2 rounded-full bg-yellow-500"></span> Inspection</span>
-                                            <span className="bg-white px-3 py-1 rounded-full flex items-center gap-1"><span className="w-2 h-2 rounded-full bg-green-500"></span> Peshawar</span>
+                                    <div className="flex items-center gap-4 bg-[#2DD4BF] text-white p-4 rounded-xl">
+                                        <div className="flex items-center justify-center bg-white/20 p-2 rounded-lg">
+                                            <FileText size={24} />
+                                        </div>
+                                        <div>
+                                            <p className="font-semibold text-sm sm:text-base mb-2">A new Task assigned to Director Laboure by Secretary Labour</p>
+                                            <div className="flex flex-wrap gap-2 text-xs font-medium text-teal-900">
+                                                <span className="bg-white px-3 py-1 rounded-full flex items-center gap-1"><span className="w-2 h-2 rounded-full bg-red-500"></span> Urgent</span>
+                                                <span className="bg-white px-3 py-1 rounded-full flex items-center gap-1"><span className="w-2 h-2 rounded-full bg-yellow-500"></span> Inspection</span>
+                                                <span className="bg-white px-3 py-1 rounded-full flex items-center gap-1"><span className="w-2 h-2 rounded-full bg-green-500"></span> Peshawar</span>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div className="flex items-center gap-4 bg-[#2DD4BF] text-white p-4 rounded-xl">
-                                    <div className="flex items-center justify-center bg-white/20 p-2 rounded-lg">
-                                        <FileText size={24} />
-                                    </div>
-                                    <div>
-                                        <p className="font-semibold text-sm sm:text-base mb-2">A new Task assigned to Director Laboure by Secretary Labour</p>
-                                        <div className="flex flex-wrap gap-2 text-xs font-medium text-teal-900">
-                                            <span className="bg-white px-3 py-1 rounded-full flex items-center gap-1"><span className="w-2 h-2 rounded-full bg-red-500"></span> Urgent</span>
-                                            <span className="bg-white px-3 py-1 rounded-full flex items-center gap-1"><span className="w-2 h-2 rounded-full bg-yellow-500"></span> Inspection</span>
-                                            <span className="bg-white px-3 py-1 rounded-full flex items-center gap-1"><span className="w-2 h-2 rounded-full bg-green-500"></span> Peshawar</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    ) : (
-                        <div className="grid w-full grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4 xl:flex-1">
-                            {renderCards()}
+                            )}
                         </div>
                     )}
 
